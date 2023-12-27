@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 02:59:06 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/07 19:58:38 by luguimar         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:07:59 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	swap(t_list **stack)
 		(*stack)->next = tmp;
 		tmp->prev = *stack;
 		(*stack)->prev = NULL;
-		tmp->next->prev = tmp;
+		if (tmp->next)
+			tmp->next->prev = tmp;
 	}
 }
 
