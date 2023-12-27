@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:24:41 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/26 22:18:43 by luguimar         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:23:53 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	arg_checker(int argc, char **args)
 	while (++i < argc)
 	{
 		j = -1;
-		if (args[i][j + 1] == '-')
+		if (args[i][j + 1] == '-' && ft_isdigit(args[i][j + 2]))
 			j++;
 		while (args[i][++j] != '\0')
 			if (!ft_isdigit(args[i][j]))
