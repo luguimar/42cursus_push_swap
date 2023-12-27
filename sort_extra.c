@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:28:16 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/21 19:29:59 by luguimar         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:50:41 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ void	sort_four_and_five_extra(t_list **stack_a, t_list **stack_b)
 			((t_node *)biggest(*stack_a)->content)->final_a_index,
 			((t_node *)biggest(*stack_a)->content)->index))
 	{
-		while (((t_node *)smallest(*stack_a)->content)->index > \
+		while ((((t_node *)smallest(*stack_a)->content)->index > \
 				ft_lstsize(*stack_a)
-			/ 2)
+				/ 2 + 1 && ft_lstsize(*stack_a) % 2 == 1) || \
+				(((t_node *)smallest(*stack_a)->content)->index \
+				> ft_lstsize(*stack_a) / 2 && \
+				ft_lstsize(*stack_a) % 2 == 0))
 		{
 			exec_operation(stack_a, NULL, "rra");
 			set_values(stack_a, stack_b);
@@ -39,8 +42,11 @@ void	sort_many_extra(t_list **stack_a, t_list **stack_b)
 			((t_node *)biggest(*stack_a)->content)->final_a_index,
 			((t_node *)biggest(*stack_a)->content)->index))
 	{
-		while (((t_node *)smallest(*stack_a)->content)->index > \
-				ft_lstsize(*stack_a) / 2)
+		while ((((t_node *)smallest(*stack_a)->content)->index > \
+				ft_lstsize(*stack_a) / 2 && ft_lstsize(*stack_a) \
+				% 2 == 0) || (((t_node *)smallest(*stack_a)-> \
+				content)->index > ft_lstsize(*stack_a) / 2 + 1 \
+				&& ft_lstsize(*stack_a) % 2 == 1))
 		{
 			exec_operation(stack_a, NULL, "rra");
 			set_values(stack_a, stack_b);

@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:59:11 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/19 20:38:33 by luguimar         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:38:44 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ int	target_half(t_list *stack_a, int src_final_index)
 	int	targt_index;
 
 	targt_index = target_index(stack_a, src_final_index);
-	if (targt_index < ft_lstsize(stack_a) / 2)
+	if ((targt_index <= ft_lstsize(stack_a) / 2 + 1 && ft_lstsize(stack_a) \
+		% 2 == 1) || (targt_index <= ft_lstsize(stack_a) / 2 && \
+		ft_lstsize(stack_a) % 2 == 0))
 		target_half = 0;
 	else
 		target_half = 1;

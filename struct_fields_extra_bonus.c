@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:20:37 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/21 18:49:18 by luguimar         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:53:12 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	set_half_for_stack(t_list **stack)
 	tmp = *stack;
 	while (tmp)
 	{
-		if ((((t_node *)tmp->content)->index < ft_lstsize(*stack) / 2
+		if ((((t_node *)tmp->content)->index <= ft_lstsize(*stack) / 2
 				&& ft_lstsize(*stack) % 2 == 0)
-			|| (((t_node *)tmp->content)->index <= ft_lstsize(*stack) / 2
+			|| (((t_node *)tmp->content)->index <= ft_lstsize(*stack) / 2 + 1
 				&& ft_lstsize(*stack) % 2 != 0))
 			((t_node *)tmp->content)->half = 0;
 		else
