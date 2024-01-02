@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:22:56 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/27 13:23:26 by luguimar         ###   ########.fr       */
+/*   Updated: 2024/01/02 01:45:00 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,8 @@ static int	arg_checker(int argc, char **args)
 		while (args[i][++j] != '\0')
 			if (!ft_isdigit(args[i][j]))
 				return (0);
-		if (ft_atol(args[i]) > INT_MAX || ft_atol(args[i]) < INT_MIN)
+		if (args[i][0] == '\0' || ft_atol(args[i]) > INT_MAX \
+			|| ft_atol(args[i]) < INT_MIN)
 			return (0);
 	}
 	i = 0;

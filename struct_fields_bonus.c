@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:06:34 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/21 18:48:55 by luguimar         ###   ########.fr       */
+/*   Updated: 2024/01/02 03:36:13 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,7 @@ void	set_price(t_list **stack_a, t_list **stack_b)
 	while (tmp)
 	{
 		node = (t_node *)tmp->content;
-		if (((t_node *)biggest(*stack_a)->content)->value < node->value
-			&& ((t_node *)biggest(*stack_a)->content)->half == node->half)
-		{
-			if (node->half == 0)
-				node->price = bigger(sort_organized_price(*stack_a),
-						node->index) + 1;
-			else
-				node->price = bigger(sort_organized_price(*stack_a),
-						node->inverted_index) + 1;
-		}
-		else
-			set_price_extra(stack_a, node);
+		set_price_extra(stack_a, node);
 		tmp = tmp->next;
 	}
 }

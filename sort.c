@@ -6,11 +6,10 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:37:13 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/19 20:37:34 by luguimar         ###   ########.fr       */
+/*   Updated: 2024/01/02 05:06:22 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
 void	sort_three(t_list **stack_a)

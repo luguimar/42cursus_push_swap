@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:20:37 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/27 12:53:12 by luguimar         ###   ########.fr       */
+/*   Updated: 2024/01/02 03:36:44 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,7 @@ void	set_price_stack_a(t_list **stack_a)
 
 void	set_price_extra(t_list **stack_a, t_node *node)
 {
-	if (((t_node *)biggest(*stack_a)->content)->value < node->value
-		&& ((t_node *)biggest(*stack_a)->content)->half != node->half)
-	{
-		if (node->half == 0)
-			node->price = node->index + sort_organized_price(*stack_a) + 1;
-		else
-			node->price = node->inverted_index
-				+ sort_organized_price(*stack_a) + 2;
-	}
-	else if (node->half == 0 && target_half(*stack_a,
+	if (node->half == 0 && target_half(*stack_a,
 			node->final_a_index) == 0)
 		node->price = bigger(node->index, target_index(*stack_a,
 					node->final_a_index)) + 1;
@@ -65,10 +56,18 @@ void	set_price_extra(t_list **stack_a, t_node *node)
 					node->final_a_index)) + 2;
 	else if (node->half == 0 && target_half(*stack_a,
 			node->final_a_index) == 1)
-		node->price = node->index + target_inverse_index(*stack_a,
-				node->final_a_index) + 2;
+		node->price = smaller(node->index + target_inverse_index \
+				(*stack_a, node->final_a_index) + 2, smaller \
+				(bigger(target_index(*stack_a, node-> \
+				final_a_index), node->index), bigger \
+				(target_inverse_index(*stack_a, node-> \
+				final_a_index) + 1, node->inverted_index + 1)) + 1);
 	else if (node->half == 1 && target_half(*stack_a,
 			node->final_a_index) == 0)
-		node->price = node->inverted_index + target_index(*stack_a,
-				node->final_a_index) + 2;
+		node->price = smaller(node->inverted_index + target_index \
+				(*stack_a, node->final_a_index) + 2, smaller \
+				(bigger(target_index(*stack_a, node-> \
+				final_a_index), node->index), bigger \
+				(target_inverse_index(*stack_a, node-> \
+				final_a_index) + 1, node->inverted_index + 1)) + 1);
 }

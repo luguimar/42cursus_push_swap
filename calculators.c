@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:59:11 by luguimar          #+#    #+#             */
-/*   Updated: 2023/12/27 12:38:44 by luguimar         ###   ########.fr       */
+/*   Updated: 2024/01/02 03:15:56 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,7 @@ int	target_index(t_list *stack_a, int src_final_index)
 		}
 		tmp = tmp->next;
 	}
+	if (smallest_bigger_index == -1)
+		return (((t_node *)smallest(stack_a)->content)->index);
 	return (smallest_bigger_index);
 }
