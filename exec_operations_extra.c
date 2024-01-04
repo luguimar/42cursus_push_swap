@@ -6,7 +6,7 @@
 /*   By: luguimar <luguimar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 18:11:55 by luguimar          #+#    #+#             */
-/*   Updated: 2024/01/02 05:04:53 by luguimar         ###   ########.fr       */
+/*   Updated: 2024/01/02 16:05:25 by luguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 int	exec_cheapest_aux1(t_list **stack_a, t_list **stack_b, t_node *node)
 {
-	if (node->half == 0 && target_half(*stack_a, node->final_a_index == 1) \
+	if (node->half == 0 && target_half(*stack_a, node->final_a_index) == 1 \
 			&& node->index != 0 && bigger(node->index, target_index \
-			(*stack_a, node->final_a_index)) <= bigger(node-> \
+			(*stack_a, node->final_a_index)) < bigger(node-> \
 			inverted_index, target_inverse_index(*stack_a, node-> \
 			final_a_index) + 1) && bigger(node->index, target_index \
-			(*stack_a, node->final_a_index)) <= node->index + \
+			(*stack_a, node->final_a_index)) < node->index + \
 			target_inverse_index(*stack_a, node->final_a_index) + 1)
 	{
 		exec_operation(stack_a, stack_b, "rr");
 		return (1);
 	}
-	else if (node->half == 0 && target_half(*stack_a, node->final_a_index == 1) \
+	else if (node->half == 0 && target_half(*stack_a, node->final_a_index) == 1 \
 			&& node->index != 0 && bigger(node->inverted_index, \
 			target_inverse_index(*stack_a, node->final_a_index)) + 1 \
-			<= bigger(node->index, target_index(*stack_a, node-> \
+			< bigger(node->index, target_index(*stack_a, node-> \
 			final_a_index)) && bigger(node->inverted_index, \
 			target_inverse_index(*stack_a, node->final_a_index)) + 1 \
-			<= node->index + target_inverse_index(*stack_a, \
+			< node->index + target_inverse_index(*stack_a, \
 			node->final_a_index) + 1)
 	{
 		exec_operation(stack_a, stack_b, "rrr");
@@ -42,24 +42,24 @@ int	exec_cheapest_aux1(t_list **stack_a, t_list **stack_b, t_node *node)
 
 int	exec_cheapest_aux2(t_list **stack_a, t_list **stack_b, t_node *node)
 {
-	if (node->half == 0 && target_half(*stack_a, node->final_a_index == 1) \
+	if (node->half == 0 && target_half(*stack_a, node->final_a_index) == 1 \
 			&& node->index != 0 && node->index + target_inverse_index \
-			(*stack_a, node->final_a_index) + 1 <= bigger \
+			(*stack_a, node->final_a_index) + 1 < bigger \
 			(node->inverted_index, target_inverse_index(*stack_a, \
 			node->final_a_index)) + 1 && bigger(node->index, target_index \
-			(*stack_a, node->final_a_index)) >= node->index \
+			(*stack_a, node->final_a_index)) > node->index \
 			+ target_inverse_index(*stack_a, node->final_a_index) + 1)
 	{
 		exec_operation(stack_a, stack_b, "rb");
 		return (1);
 	}
-	else if (node->half == 1 && target_half(*stack_a, node->final_a_index == 0) \
+	else if (node->half == 1 && target_half(*stack_a, node->final_a_index) == 0 \
 			&& target_index(*stack_a, node->final_a_index) != 0 \
 			&& node->inverted_index + target_index(*stack_a, node-> \
-			final_a_index) + 1 <= bigger(node->inverted_index, \
+			final_a_index) + 1 < bigger(node->inverted_index, \
 			target_inverse_index(*stack_a, node->final_a_index)) \
 			+ 1 && bigger(node->index, target_index(*stack_a, node \
-			->final_a_index)) >= node->index + target_inverse_index \
+			->final_a_index)) > node->index + target_inverse_index \
 			(*stack_a, node->final_a_index) + 1)
 	{
 		exec_operation(stack_a, stack_b, "ra");
@@ -70,25 +70,25 @@ int	exec_cheapest_aux2(t_list **stack_a, t_list **stack_b, t_node *node)
 
 int	exec_cheapest_aux3(t_list **stack_a, t_list **stack_b, t_node *node)
 {
-	if (node->half == 1 && target_half(*stack_a, node->final_a_index == 0) \
+	if (node->half == 1 && target_half(*stack_a, node->final_a_index) == 0 \
 			&& target_index(*stack_a, node->final_a_index) != 0 \
 			&& node->inverted_index + target_index(*stack_a, node-> \
-			final_a_index) + 1 >= bigger(node->inverted_index, \
+			final_a_index) + 1 > bigger(node->inverted_index, \
 			target_inverse_index(*stack_a, node->final_a_index)) \
 			+ 1 && bigger(node->index, target_index(*stack_a, node \
-			->final_a_index)) >= bigger(node->inverted_index, \
+			->final_a_index)) > bigger(node->inverted_index, \
 			target_inverse_index(*stack_a, node->final_a_index)) + 1)
 	{
 		exec_operation(stack_a, stack_b, "rrr");
 		return (1);
 	}
-	else if (node->half == 1 && target_half(*stack_a, node->final_a_index == 0) \
+	else if (node->half == 1 && target_half(*stack_a, node->final_a_index) == 0 \
 			&& target_index(*stack_a, node->final_a_index) != 0 \
 			&& node->inverted_index + target_index(*stack_a, node-> \
-			final_a_index) + 1 >= bigger(node->index, \
+			final_a_index) + 1 > bigger(node->index, \
 			target_index(*stack_a, node->final_a_index)) \
-			+ 1 && bigger(node->index, target_index(*stack_a, node \
-			->final_a_index)) <= bigger(node->inverted_index, \
+			&& bigger(node->index, target_index(*stack_a, node \
+			->final_a_index)) < bigger(node->inverted_index, \
 			target_inverse_index(*stack_a, node->final_a_index)) + 1)
 	{
 		exec_operation(stack_a, stack_b, "rr");
